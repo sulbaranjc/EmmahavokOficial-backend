@@ -4,14 +4,12 @@ const URI = process.env.MONGODB_URI
   ? process.env.MONGODB_URI
   : "MONGODB_URI=mongodb://localhost/EmmahavokClient";
 
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
-
-const connection = mongoose.connection;
-
-connection.once("open", () => {
-  console.log("DB is connected");
-});
+mongoose
+  .connect(URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  })
+  .then(() => console.log("DB Connected!"))
+  .catch(err => {
+    console.log(`DB Connection Error: ${err.message}`);
+  });
