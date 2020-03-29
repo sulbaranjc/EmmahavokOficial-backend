@@ -4,7 +4,8 @@ const router = Router();
 const {
   getClient,
   createClient,
-  deleteClient
+  deleteClient,
+  checkClient
 } = require("../controllers/client");
 
 router
@@ -12,6 +13,9 @@ router
   .get(getClient)
   .post(createClient);
 
-router.route("/:id").delete(deleteClient);
+router
+  .route("/:id")
+  .put(checkClient)
+  .delete(deleteClient);
 
 module.exports = router;

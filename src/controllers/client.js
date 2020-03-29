@@ -19,4 +19,12 @@ ClientCtrl.deleteClient = async (req, res) => {
   res.send("Client deleted");
 };
 
+ClientCtrl.checkClient = async (req, res) => {
+  const { check_it, first_name, last_name, email, phone, question } = req.body;
+  const ClientOld = await Client.findById(req.params.id);
+  ClientOld.check_it = true;
+  await ClientOld.save();
+  res.json({ message: "Client updated" });
+};
+
 module.exports = ClientCtrl;

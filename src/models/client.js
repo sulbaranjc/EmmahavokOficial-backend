@@ -16,7 +16,7 @@ const clientSchema = new Schema(
     question: {
       type: String
     },
-    Check_it: {
+    check_it: {
       type: Boolean,
       default: false
     }
