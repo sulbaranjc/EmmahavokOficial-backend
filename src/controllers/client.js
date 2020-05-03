@@ -3,7 +3,7 @@ const ClientCtrl = {};
 const Client = require("../models/client");
 
 ClientCtrl.getClient = async (req, res) => {
-  const messages = await Client.find();
+  const messages = await Client.find({ check_it: false });
   res.json(messages);
 };
 
